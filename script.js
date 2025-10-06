@@ -5,7 +5,6 @@ function addTodo() {
   const text = todoInput.value.trim();
   if (text === '') return;
 
-  // Create elements
   const todoItemBox = document.createElement('span');
   todoItemBox.className = 'todo-list-item';
 
@@ -16,7 +15,6 @@ function addTodo() {
   const todoItemButtons = document.createElement('span');
   todoItemButtons.className = 'todo-item-buttons';
 
-  // Buttons
   const completeButton = document.createElement('button');
   completeButton.className = 'complete-button';
   completeButton.textContent = 'Complete';
@@ -29,14 +27,12 @@ function addTodo() {
   deleteButton.className = 'delete-button';
   deleteButton.textContent = 'Delete';
 
-  // Structure
   todoItemButtons.append(completeButton, editButton, deleteButton);
   todoItemBox.append(todoItemText, todoItemButtons);
   todoList.appendChild(todoItemBox);
 
   todoInput.value = '';
 
-  // ✅ Complete Button
   completeButton.addEventListener('click', function () {
     todoItemText.classList.toggle('completed');
     if (todoItemText.classList.contains('completed')) {
@@ -50,7 +46,6 @@ function addTodo() {
     }
   });
 
-  // 📝 Edit → Save Button
   editButton.addEventListener('click', function () {
     if (editButton.textContent === 'Edit') {
       const input = document.createElement('input');
@@ -78,13 +73,11 @@ function addTodo() {
     }
   });
 
-  // 🗑️ Delete Button
   deleteButton.addEventListener('click', function () {
     todoItemBox.remove();
   });
 }
 
-// ✅ Enter key se add karne ke liye
 todoInput.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     addTodo();

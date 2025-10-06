@@ -8,7 +8,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden; /* 🛑 horizontal scroll hataya */
+  overflow-x: hidden;
 }
 
 main {
@@ -74,19 +74,17 @@ main {
   overflow-y: auto;
 }
 
-/* 🟢 FIX: Todo item layout */
 .todo-list-item {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap; /* ✅ long text wrap kare */
+  flex-wrap: wrap;
   padding: 10px 0;
   gap: 10px;
   width: 100%;
   border-bottom: 1px solid #eee;
 }
 
-/* 🟢 FIX: Text wrapping */
 .todo-item,
 .todo-list-item input {
   border-radius: 10px;
@@ -97,13 +95,13 @@ main {
   background-color: #f7f7f7;
   word-wrap: break-word;
   white-space: normal;
-  flex: 1; /* ✅ text flexible rahe */
+  flex: 1;
 }
 
 .todo-item-buttons {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* ✅ buttons neeche chale jaye agar space kam ho */
+  flex-wrap: wrap;
   width: 100%;
   gap: 10px;
 }
@@ -112,7 +110,7 @@ main {
   padding: 8px;
   border: none;
   border-radius: 8px;
-  flex: 1; /* ✅ equal size buttons */
+  flex: 1;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
