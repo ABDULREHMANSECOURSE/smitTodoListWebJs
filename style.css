@@ -21,7 +21,7 @@ main {
 }
 
 .todo-container {
-  width: 400px;
+  max-width: 400px;
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
