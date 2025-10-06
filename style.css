@@ -1,131 +1,139 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden; /* 🛑 horizontal scroll hataya */
 }
 
 main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 
 .todo-container {
-    width: 400px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 400px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .add-todo {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
 }
 
 .todo-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 .add-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #28a745;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .add-button:hover {
-    background-color: #218838;
-    transition-duration: 500ms;
-    transform: scale(1.12);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #218838;
+  transition-duration: 500ms;
+  transform: scale(1.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .todo-list {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    max-height: 300px;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
+/* 🟢 FIX: Todo item layout */
 .todo-list-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    gap: 10px;
-    width: 100%;
-    border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* ✅ long text wrap kare */
+  padding: 10px 0;
+  gap: 10px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
 }
 
-.todo-item {
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    background-color: #f7f7f7;
+/* 🟢 FIX: Text wrapping */
+.todo-item,
+.todo-list-item input {
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: left;
+  padding: 10px;
+  width: 100%;
+  background-color: #f7f7f7;
+  word-wrap: break-word;
+  white-space: normal;
+  flex: 1; /* ✅ text flexible rahe */
 }
 
 .todo-item-buttons {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* ✅ buttons neeche chale jaye agar space kam ho */
+  width: 100%;
+  gap: 10px;
 }
 
 .todo-item-buttons button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 14px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  flex: 1; /* ✅ equal size buttons */
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .todo-item-buttons button.complete-button {
-    background-color: #28a745;
-    color: white;
+  background-color: #28a745;
+  color: white;
 }
 
 .todo-item-buttons button.edit-button {
-    background-color: #007bff;
-    color: white;
+  background-color: #007bff;
+  color: white;
 }
 
 .todo-item-buttons button.delete-button {
-    background-color: #dc3545;
-    color: white;
+  background-color: #dc3545;
+  color: white;
 }
 
 .todo-item-buttons button:hover {
-    opacity: 0.8;
-    transform: scale(0.95);
-    transition-duration: 200ms;
+  opacity: 0.8;
+  transform: scale(0.97);
 }
