@@ -1,16 +1,36 @@
 const todoInput = document.getElementById('todoInput');
 const todoList = document.getElementById('todoList');
 
-function addTodo() {
-  const text = todoInput.value.trim();
-  if (text === '') return;
+// LocalStorage se load
+window.addEventListener('load', () => {
+  const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+  savedTodos.forEach(todo => createTodoElement(todo.text, todo.completed));
+});
 
+function saveTodos() {
+  const todos = [];
+  document.querySelectorAll('.todo-list-item').forEach(item => {
+    const text = item.querySelector('.todo-item').textContent;
+    const completed = item.querySelector('.todo-item').classList.contains('completed');
+    todos.push({ text, completed });
+  });
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function createTodoElement(text, completed = false) {
   const todoItemBox = document.createElement('span');
   todoItemBox.className = 'todo-list-item';
 
   const todoItemText = document.createElement('span');
   todoItemText.className = 'todo-item';
   todoItemText.textContent = text;
+
+  if (completed) {
+    todoItemText.classList.add('completed');
+    todoItemText.style.cssText = `
+      color: #fff;
+      background-color: #28a746a6;`;
+  }
 
   const todoItemButtons = document.createElement('span');
   todoItemButtons.className = 'todo-item-buttons';
@@ -31,8 +51,6 @@ function addTodo() {
   todoItemBox.append(todoItemText, todoItemButtons);
   todoList.appendChild(todoItemBox);
 
-  todoInput.value = '';
-
   completeButton.addEventListener('click', function () {
     todoItemText.classList.toggle('completed');
     if (todoItemText.classList.contains('completed')) {
@@ -44,6 +62,7 @@ function addTodo() {
       color: #000;
       background-color: #f7f7f7;`;
     }
+    saveTodos();
   });
 
   editButton.addEventListener('click', function () {
@@ -70,12 +89,22 @@ function addTodo() {
       todoItemBox.insertBefore(todoItemText, todoItemButtons);
       editButton.textContent = 'Edit';
       editButton.style.backgroundColor = '#2196f3';
+      saveTodos();
     }
   });
 
   deleteButton.addEventListener('click', function () {
     todoItemBox.remove();
+    saveTodos();
   });
+}
+
+function addTodo() {
+  const text = todoInput.value.trim();
+  if (text === '') return;
+  createTodoElement(text);
+  todoInput.value = '';
+  saveTodos();
 }
 
 todoInput.addEventListener('keydown', function (event) {
