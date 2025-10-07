@@ -1,4 +1,4 @@
-#Todo List
+Todo List
 ---
 <p align="center">
   <img src="assets/arp.png" alt="Project Logo" width="150"/>
