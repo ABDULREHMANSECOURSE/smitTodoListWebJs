@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/arp.png" alt="Project Logo" width="150"/>
+  <img src="assets/arp.png" href="smittodolistwebjs.vercel.app" alt="Project Logo" width="150"/>
 </p>
 
 ---
