@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="arp.png" alt="Project Logo" width="150"/>
+  <img src="assets/arp.png" alt="Project Logo" width="150"/>
 </p>
 
 ---
