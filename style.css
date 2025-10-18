@@ -68,8 +68,8 @@ main {
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding-right: 10px;
+  margin-right: -25px;
   max-height: 60vh;
   overflow-y: auto;
 }
@@ -134,4 +134,19 @@ main {
 .todo-item-buttons button:hover {
   opacity: 0.8;
   transform: scale(0.97);
+}
+
+
+* {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #28a745;
+}
+
+::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 50%;  
 }
